@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Farines:</h2>
+<div id="main">
+<table border="0" cellpadding="4" width="100%">
+    <tr>
+        <td><b></b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% for post in object_list %}
+    <tr>
+        <td {% if forloop.last %}class="last"{% endif %}>
+        <div class="title">{{ post.nom }}:
+            </div></td>
+        <td>{{ post.up_date }}</td>
+        <td>{{ post.stock }} Kg</td>
+        <td {% if forloop.last %}class="last"{% endif %}>
+         <a class="button" href="{% url 'farina_update' post.id %}">Actualitza</a>
+        </td>
+{#        <form>#}
+{#             <div id={{ post.id }} >#}
+{#                   Stock revisat: {{ form.as_ul }}#}
+{#                   <input type="hidden" name="farinaid" value={{ post.id }} />#}
+{#                   <input type="submit" name="Respon" value="Envia"/>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#        </form>#}
+        <td {% if forloop.last %}class="last"{% endif %}>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+   </div>
+{% endblock %}

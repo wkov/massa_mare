@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>
+    {#    <a href="{{ object.post }}"> #}
+  Nom:    {{ object.nom }}
+
+    {#</a>#}
+    </h2>
+
+  Acumulatiu: {{ object.acumulatiu }}<br>
+  Acumulat:<br>
+  {% for p in object.get_comandes %}
+      {% for s in p.get_incomandes_deute_client %}
+            <b>Valor:</b> {{ s.preu }} € <b>Tipus pa:</b>{{ s.tipus_pa }} <b>De mig:</b>{{ s.de_mig }}
+          <b>Troc:</b> {{ s.troc }} <b> Fornada:</b> {{ p.fornada }}<br>
+      {% endfor %}
+  {% endfor %}
+{% endblock %}

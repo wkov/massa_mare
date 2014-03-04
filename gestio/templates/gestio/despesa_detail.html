@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>
+    {#    <a href="{{ object.post }}"> #}
+      {{ object.nom }}
+
+    {#</a>#}
+    </h2>
+
+
+  <a class="button" href="{% url 'despesa_update' object.id %}"><b>MODIFICAR</b></a><br>
+
+  <b>Valor:</b>{{ object.valor }}<br>
+
+  <b>Fornada:</b>{{ object.fornada }} <br>
+  <b>Data:</b>{{ object.data }} <br>
+  <b>Proveïdor:</b>{{ object.proveidor }}<br>
+  <b>Cancel·lat?</b>{{ object.cancelat }}<br>
+  <b>Observacions:</b>{{ object.observacions }}<br>
+  <b>Responsable:</b>{{ object.responsable }}<br>
+
+{% endblock %}

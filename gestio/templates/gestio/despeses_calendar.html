@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block lateral %}
+
+{% endblock %}
+{% block content %}
+<h2>Calendari de compres</h2>
+{#<a href="{% url 'crear_despesa'  %}">Registra despesa</a> |#}
+
+
+
+
+<table width="100%" >
+    <tr>
+        <td width="20%">
+          &lt;&lt; <a href="/despeses/{{PreviousYear}}/{{PreviousMonth}}/">{{PreviousMonthName}} {{PreviousYear}}</a>
+        </td>
+{#        <td width="20%" align="left">#}
+{#          &lt;&lt; <a href="/{{YearBeforeThis}}/{{Month}}/">{{MonthName}} {{YearBeforeThis}}</a>#}
+{#        </td>#}
+{#        <td width="20%"><a href="/despeses/{{Year}}/{{Month}}/">Today</a></td>#}
+{#        <td width="20%" align="right">#}
+{#          <a href="/{{YearAfterThis}}/{{Month}}/">{{MonthName}} {{YearAfterThis}}</a> &gt;&gt;#}
+{#        </td>#}
+        <td width="20%">
+          <a href="/despeses/{{NextYear}}/{{NextMonth}}/">{{NextMonthName}} {{NextYear}}</a> &gt;&gt;
+        </td>
+    </tr>
+</table>
+<div id="calendar">
+<br>
+  {{Calendar}}
+</div>
+
+
+{% endblock %}

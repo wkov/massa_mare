@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block lateral %}
+
+{% endblock %}
+{% block content %}
+<h2>Economia</h2>
+{#<a href="{% url 'crear_despesa'  %}">Registra despesa</a> |#}
+
+<br>
+<b>Saldo en caixa actualment:</b> {{ Finances.get_saldo }} <br>
+<b>Saldo compromès en deutes:</b> {{ Finances.get_vdeutes }} <br>
+<b>Saldo real després de liquidacions:</b> {{ Finances.get_saldoreal }}
+
+{% endblock %}

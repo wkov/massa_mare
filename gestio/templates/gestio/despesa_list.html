@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Deutes</h2>
+    <div id="main">
+    <table border="0" cellpadding="4" width="100%">
+        <tr>
+            <td><b>Nom</b></td>
+            <td><b>Data</b></td>
+            <td><b>Cancel·lat?</b></td>
+            <td><b>Valor</b></td>
+            <td><b>Fornada</b></td>
+            <td><b>Proveïdor</b></td>
+            <td><b>Responsable</b></td>
+            <td><b>Observacions</b></td>
+        </tr>
+        {% for post in object_list %}
+            <tr>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <div class="title">{{ post.nom }}
+                    </div></td>
+                <td>{{ post.data }}</td><td>{{ post.cancelat }}</td><td>{{ post.valor }}€</td><td>{{ post.forn }}</td>
+                <td>{{ post.proveidor }}</td><td>{{ post.responsable }}</td><td>{{ post.observacions }}</td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <a class="button" href="{% url 'despesa_update' post.id %}">MODIFICAR</a>
+                </td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}

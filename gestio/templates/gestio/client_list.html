@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="main">
+        <table border="0" cellpadding="4" width="100%">
+            <tr>
+                <td><b><h2>Clients:</h2></b></td>
+                <td>Acumulatiu?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% for post in object_list %}
+            <tr>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                <div class="title">{{ post.nom }}
+                    </div></td>
+                <td>{{ post.acumulatiu }}</td>
+                <td><a class="button" href="{% url 'client_detail' post.id %}">DETALL</a></td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <a class="button" href="{% url 'client_update' post.id %}">MODIFICAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

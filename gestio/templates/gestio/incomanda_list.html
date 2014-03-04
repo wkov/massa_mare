@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Morosos:</h2>
+<div id="main">
+<table border="0" cellpadding="4" width="100%">
+    <tr>
+        <td><b>Client</b></td>
+        <td><b>Fornada</b></td>
+        <td><b>Tipus de pa</b></td>
+        <td><b>Nº pans</b></td>
+        <td><b>Preu</b></td>
+    </tr>
+    {% for post in object_list %}
+    <tr>
+        <td {% if forloop.last %}class="last"{% endif %}>
+        <div class="title">{{ post.comanda.client }}
+            </div></td>
+        <td>{{ post.comanda.fornada }}</td>
+        <td>{{ post.tipus_pa }} Kg</td>
+        <td>{{ post.num_pans }}</td>
+        <td>{{ post.preu }}</td>
+        <td {% if forloop.last %}class="last"{% endif %}>
+         <a class="button"
+            href="{% url 'incomanda_update' suppk=post.comanda.fornada.id supk=post.comanda.id pk=post.id %}">
+             Actualitza</a>
+        </td>
+        <td {% if forloop.last %}class="last"{% endif %}>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+   </div>
+{% endblock %}

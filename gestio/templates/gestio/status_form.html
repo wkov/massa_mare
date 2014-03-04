@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+Hem actualitzat l'stock de farines? Si és el cas, hem repartit tasques de compra en general? <br><br>
+
+Hem informat de tots els pans no cobrats, no entregats o venuts sense comanda prèvia? <br><br>
+
+He apuntat i cancel·lat les compres que he fet? <br><br>
+
+Si totes les respostes són sí, feina feta! bona producció!!  <br><br>
+<form method="post" action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+{#  <input type="text" id="datepicker" size="30">#}
+  <input type="submit" value="Add">
+</form>
+{% endblock %}

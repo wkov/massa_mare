@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Fornada {{ object.nom }}</h2>  <b><a href="{% url 'fornada_delete' pk=object.pk%}">Esborra fornada</a></b>
+<a> {{ object.data }}</a> |
+Marge d'error: <a href="{% url 'fornada_update' pk=object.pk %}"> {{ object.marge_error }} %</a> |
+Status: <a href="{% url 'status_update' supk=object.pk pk=object.status.pk %}"> {{ object.status }} </a> |
+<h3>Comandes:</h3>
+<a href="{% url 'comanda_create' pk=object.pk %}">Afegir client</a>
+{#<a href="{% url 'incomanda_create' pk=object.pk %}">Afegir pa</a>#}
+{% if object.referent %}
+{#    <a href="{{ object.get_recomandes }}">Recuperar comandes</a>#}
+{% endif %}
+<ul>
+{% for thing in object.get_comandes %}
+    <br><li><a><b> {{ thing.client }} </b></a>
+{#    <a href="{% url 'comanda_update'  suppk=object.pk pk=thing.pk %}">Edita</a> |#}
+  <a href="{% url 'comanda_delete'  suppk=object.pk pk=thing.pk %}">Esborra</a> |
+  <a href="{% url 'incomanda_create' supk=object.pk pk=thing.pk %}">Afegir pans</a></li>
+
+    {% for inc in thing.get_incomandes %}
+        {% if inc.de_mig %}
+            1/2
+        {% endif %}
+        <a href="{% url 'incomanda_update'  suppk=object.pk supk=thing.pk pk=inc.pk %}">     {{ inc.tipus_pa }}
+        </a>  <a href="{% url 'incomanda_update'  suppk=object.pk supk=thing.pk pk=inc.pk %}">     {{ inc.num_pans }}
+    </a>  <a> {{ inc.preu }}€</a>
+        <a href="{% url 'incomanda_update'  suppk=object.pk supk=thing.pk pk=inc.pk %}">Edita</a> |
+        <a href="{% url 'incomanda_delete'  suppk=object.pk supk=thing.pk pk=inc.pk%}">Esborra</a><br>
+    {% endfor %}
+{% endfor %}
+</ul>
+
+<h3>Matèria prima:</h3>
+<ul>
+{% for thing in object.get_varietats_pa %}
+    <br><b>{{ thing.get_nom }}</b>.......... Mitjos: {{ thing.get_mitjos }}<br>
+    Farina "{{ thing.get_farina }}": <a>{{ thing.get_totalfarina }}</a> g<br>
+    Aigua: <a>{{ thing.get_totalAiguaxVarietat }}</a> g<br>
+    Sal: <a>{{ thing.get_totalSalxVarietat }}</a> g<br>
+    Massa Mare: <a>{{ thing.get_totalMassamarexVarietat }}</a> g<br>
+    Llevat fresc: <a>{{ thing.get_totalLlevatfrescxVarietat }}</a> g<br>
+    Extra "{{ thing.get_llavors }}": <a>{{ thing.get_totalllavors }}</a> g<br>
+{% endfor %}
+</ul>
+<h3>Resultats:</h3>
+<ul>
+<a> Despesa: {{ object.despesa }}</a> €<br>
+<a> Ingres: {{ object.ingres }}</a> €<br>
+<a> Benefici: {{ object.benefici }}</a> €<br>
+<a> Ingrès latent: {{ object.ingres_latent }}</a> €
+</ul>
+
+{% endblock %}

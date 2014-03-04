@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block lateral %}
+{% endblock %}
+
+{% block content %}
+
+
+<h2>Fornades:</h2>
+
+
+<br>
+<table width="140%" >
+    <tr>
+        <th width="50%" align=left>
+          &lt;&lt; <a href="/{{PreviousYear}}/{{PreviousMonth}}/">{{PreviousMonthName}} {{PreviousYear}}</a>
+        </th>
+{#        <td width="20%" align="left">#}
+{#          &lt;&lt; <a href="/{{YearBeforeThis}}/{{Month}}/">{{MonthName}} {{YearBeforeThis}}</a>#}
+{#        </td>#}
+        <th width="100px" align=center><a href="/">Today</a></th>
+{#        <td width="20%" align="right">#}
+{#          <a href="/{{YearAfterThis}}/{{Month}}/">{{MonthName}} {{YearAfterThis}}</a> &gt;&gt;#}
+{#        </td>#}
+        <th width="50%" align=right>
+          <a href="/{{NextYear}}/{{NextMonth}}/">{{NextMonthName}} {{NextYear}}</a> &gt;&gt;
+        </th>
+    </tr>
+</table>
+<div id="calendar">
+                      {{Calendar}}
+</div>
+
+{% endblock %}

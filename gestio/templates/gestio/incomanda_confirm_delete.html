@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Segur que vols esborrar "{{ object }}"?</p>
+
+<form method="post" action="{% url 'incomanda_delete' suppk=object.comanda.fornada.pk supk=object.comanda.pk pk=object.pk %}">
+  {% csrf_token %}
+  <a href="{% url 'fornada_detail' pk=object.comanda.fornada.pk %}">Go back</a>
+  <p><input type="submit" value="Confirm deletion" /></p>
+</form>
+
+{% endblock %}

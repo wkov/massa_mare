@@ -1,0 +1,108 @@
+<html>
+<head>
+  <title>A Mollet</title>
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/main.css" />
+{#  <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>#}
+{#  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">#}
+{#  <script src="{{ STATIC_URL }}js/vote.js"></script>#}
+{#  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>#}
+{#  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>#}
+{#  <link rel="stylesheet" href="/resources/demos/style.css">#}
+
+
+</head>
+
+
+
+<body>
+<div  style="width: 320px; height: 60px; margin: 0 auto; text-align: center">
+<h1>Massa Software</h1>
+</div>
+
+<header>
+  <ul id="menu">
+  <li class=""> <a href="{% url 'home' %}"> Fornades</a>
+        <ul>
+            <li class=""> <a href="{% url 'fornada_create' %}"> Crea fornada </a> </li>
+            <li class=""> <a href="{% url 'home' %}"> Calendari de fornades</a> </li>
+            <li class=""> <a href="{% url 'farina_list' %}"> Stock de farines </a> </li>
+        </ul>
+  </li>
+  <li class=""> <a href="#"> Clients </a>
+        <ul>
+            <li class=""> <a href="{% url 'client_create' %}">Crear client</a> </li>
+            <li class=""> <a href="{% url 'client_list' %}">Llistat de clients</a> </li>
+            <li class=""><a href="{% url 'incomanda_list' %}">Llistat de morositat</a> </li>
+        </ul>
+  </li>
+  <li class=""> <a href="{% url 'despeses' %}"> Compres </a>
+        <ul>
+            <li class=""> <a href="{% url 'despesa_create' %}"> Registrar compra </a> </li>
+            <li class=""> <a href="{% url 'despeses' %}"> Calendari de compres </a> </li>
+        </ul>
+
+  </li>
+  <li class=""> <a href="{% url 'economia' %}"> Economia </a>
+        <ul>
+            <li class=""> <a href="{% url 'despesa_list' %}"> Veure deutes </a> </li>
+            <li class=""> <a href="{% url 'economia' %}"> Veure saldo </a>
+        </ul>
+  </li>
+  <li class=""> <a href="#"> Configuració </a> </li>
+  <li class=""> <a href="#"> Tasques </a>
+         <ul>
+            <li class=""> <a href="%"> Tasques personals</a> </li>
+            <li class=""> <a href="%"> Totes les tasques </a>
+        </ul>
+  </li>
+  </ul>
+
+
+{#    <menu label="Fornades">#}
+{#      <a href="{% url 'fornada_create' %}" xmlns="http://www.w3.org/1999/html">Crea fornada</a> |#}
+{#    </menu>#}
+{#    <a href="{% url 'home' %}">Fornades</a> |#}
+{#{% if user.is_authenticated %}#}
+{#    <a href="{% url 'farina_list' %}">Stock de farines</a> |#}
+{#    <a href="{% url 'client_create' %}">Crear client</a>  |#}
+{#    {% block lateral %}#}
+{#    {% endblock %}#}
+{#{% else %}#}
+{#    <a href="{% url 'login' %}">Inicia sessió</a>#}
+{#{% endif %}#}
+{#  </p>#}
+{#  </menu>#}
+
+</header>
+
+
+
+<div style="
+    position: relative;
+    margin-top: 0px;
+    width: 20%;
+    background-color: #EAE6D4;
+    float: left;">
+
+</div>
+
+
+<div style="width: 80%">
+{% block content %}
+{% endblock %}
+</div>
+<footer>
+  <p>
+    <a href="{% url 'home' %}">Inici</a> |
+{% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Desconnexió</a> |
+{#    <a href="{% url 'profile' slug=user.username %}">#}
+    <b>{{ user.username }}</b> |
+{% else %}
+    <a href="{% url 'login' %}">Inicia sessió</a>
+{% endif %}
+  </p>
+</footer>
+
+</body>
+</html>
